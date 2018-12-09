@@ -1,18 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@android:color/white"
     android:clickable="true"
     android:focusable="true">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:textStyle="bold"
+    android:gravity="center_horizontal"
+    android:text="Transaction Type"/>
 
     <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/spinner"
+        android:id="@+id/spin_tr_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="Source"/>
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spin_src"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="Category"/>
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spin_target"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"/>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:hint="Select Date"
+        android:clickable="true"
+        android:focusable="false"
+        android:gravity="center_horizontal"
+        android:id="@+id/dpick_tr"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="Enter Amount"
+        android:id="@+id/edt_amt_tr"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="Remarks"
+        android:id="@+id/edt_remarks_tr"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_margin="20dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="0"
+        android:id="@+id/txt_src_blc"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="0"
+        android:id="@+id/txt_target_blc"/>
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_add_tr"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            android:text="Add"/>
+    </LinearLayout>
+</ScrollView>

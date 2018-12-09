@@ -1,10 +1,10 @@
 package com.expense.tracker.models;
 
+import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 import com.orm.dsl.Unique;
 
-@Table
-public class Categories{
+public class Categories extends SugarRecord {
     @Unique
     String category;
 
