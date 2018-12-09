@@ -1,4 +1,4 @@
-package planner.budget.com.budgetplanner.fragments;
+package com.expense.tracker.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import planner.budget.com.budgetplanner.R;
+import com.expense.tracker.R;
 
 
 public class MonthiliesFragment extends Fragment {

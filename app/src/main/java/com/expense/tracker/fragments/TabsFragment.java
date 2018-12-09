@@ -1,49 +1,57 @@
-package planner.budget.com.budgetplanner;
+package com.expense.tracker.fragments;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.expense.tracker.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import planner.budget.com.budgetplanner.fragments.CategoriesFragment;
-import planner.budget.com.budgetplanner.fragments.MonthiliesFragment;
-import planner.budget.com.budgetplanner.fragments.PocketsFragment;
+public class TabsFragment extends Fragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-public class MainActivity extends AppCompatActivity {
-    private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private View view;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        view= inflater.inflate(R.layout.fragment_tabs, container, false);
+        return view;
+    }
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+    @Override
+    public void onStart() {
+        super.onStart();
+        final ViewPager viewPager = view.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        final TabLayout tabLayout = view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new CategoriesFragment(), "Categories");
         adapter.addFragment(new PocketsFragment(), "Pockets");
         adapter.addFragment(new MonthiliesFragment(), "Monthilies");
         viewPager.setAdapter(adapter);
     }
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -67,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
+
+
 
         @Override
         public CharSequence getPageTitle(int position) {

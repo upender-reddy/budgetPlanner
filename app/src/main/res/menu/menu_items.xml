@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compt="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.SplashScreenActivity">
+
+    <item
+        android:id="@+id/menu_add_transactions"
+        android:title="@string/add_transaction"
+        android:icon="@android:drawable/ic_input_add"
+        compt:showAsAction="always"
+        android:menuCategory="secondary"/>
+
+    <item
+        android:id="@+id/menu_add"
+        android:title="@string/add_target"
+        compt:showAsAction="ifRoom"
+        android:menuCategory="secondary"/>
+
+</menu>

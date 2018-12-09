@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Budget Planner</string>
+    <string name="app_name">Expense Tracker</string>
     <string name="categories">Categories</string>
     <string name="pockets">Pockets</string>
     <string name="monthilies">Monthilies</string>
+    <string name="add">Add</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="add_target">Add Target</string>
 </resources>

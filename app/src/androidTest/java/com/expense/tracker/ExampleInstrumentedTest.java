@@ -1,4 +1,4 @@
-package planner.budget.com.budgetplanner;
+package com.expense.tracker;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

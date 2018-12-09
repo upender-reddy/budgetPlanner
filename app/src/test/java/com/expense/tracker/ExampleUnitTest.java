@@ -1,4 +1,4 @@
-package planner.budget.com.budgetplanner;
+package com.expense.tracker;
 
 import org.junit.Test;
 
