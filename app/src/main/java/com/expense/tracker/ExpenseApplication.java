@@ -1,9 +1,12 @@
 package com.expense.tracker;
 
 import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.orm.SugarApp;
 import com.orm.SugarContext;
+
+import static com.orm.SugarContext.getSugarContext;
 
 public class ExpenseApplication extends SugarApp {
     private static ExpenseApplication expenseApplication;
@@ -14,7 +17,6 @@ public class ExpenseApplication extends SugarApp {
         expenseApplication=this;
 
     }
-
 
     public static synchronized ExpenseApplication getInstance(){
         return expenseApplication;

@@ -39,6 +39,7 @@ public class AddCategoryFragment extends Fragment {
         bindToRes();
         initialize();
         setListeners();
+        setUpAdapter();
         return view;
     }
 
@@ -59,7 +60,6 @@ public class AddCategoryFragment extends Fragment {
                 }
             }
         });
-        setUpAdapter(categories);
     }
 
     private void insertToDb(String category) {
@@ -89,7 +89,7 @@ public class AddCategoryFragment extends Fragment {
         }
     }
 
-    private void setUpAdapter(List<Categories> categories) {
+    private void setUpAdapter() {
         adapter = new AddCategoriesAdapter(categories, getActivity());
         recyclerView.setAdapter(adapter);
         //recyclerView.setVisibility(View.VISIBLE);

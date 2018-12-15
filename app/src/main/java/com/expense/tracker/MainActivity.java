@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigateToFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }
 
     @Override

@@ -40,6 +40,7 @@ public class AddPocketFragment extends Fragment {
         bindToRes();
         initialize();
         setListeners();
+        setUpAdapter();
         return view;
     }
 
@@ -60,7 +61,6 @@ public class AddPocketFragment extends Fragment {
                 }
             }
         });
-        setUpAdapter(pockets);
     }
 
     private void insertToDb(String pocket) {
@@ -90,7 +90,7 @@ public class AddPocketFragment extends Fragment {
         }
     }
 
-    private void setUpAdapter(List<Pockets> pockets) {
+    private void setUpAdapter() {
         adapter = new AddPocketsAdapter(pockets, getActivity());
         recyclerView.setAdapter(adapter);
     }

@@ -11,15 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.expense.tracker.MainActivity;
 import com.expense.tracker.R;
 import com.expense.tracker.constants.Constants;
 import com.expense.tracker.models.Categories;
 import com.expense.tracker.models.Pockets;
+import com.expense.tracker.models.Transactions;
+import com.expense.tracker.util.Utils;
 import com.orm.SugarRecord;
 
 import java.text.SimpleDateFormat;
@@ -33,12 +37,13 @@ public class AddTransactionFragment extends Fragment {
     private AppCompatSpinner spinTrType,spinSrc,spinTarget;
     private TextView txtTargetBlc,txtSrcBlc;
     private EditText edAmt,edRemarks,edDate;
+    private Button btnAddTrn;
 
     private static  ArrayList<String> spinnerItemsTrType = Constants.TransactionType.transactionTypes();
     private static  ArrayList<String> spinnerItemsSrc ;
     private static  ArrayList<String> spinnerItemsTarget;
-    private int srcPos,targetPos;
-    Calendar myCalendar;
+    private int trnType,srcPos,targetPos,year,month,day;
+    private Calendar myCalendar;
 
     private View view;
 
@@ -56,6 +61,9 @@ public class AddTransactionFragment extends Fragment {
     private void initialize() {
         spinnerItemsTarget=new ArrayList<>();
         spinnerItemsSrc=new ArrayList<>();
+        srcPos=0;
+        trnType=0;
+        targetPos=0;
         loadTarget(0);
         myCalendar = Calendar.getInstance();
         updateLabel();
@@ -83,9 +91,22 @@ public class AddTransactionFragment extends Fragment {
         txtTargetBlc=view.findViewById(R.id.txt_target_blc);
         edAmt=view.findViewById(R.id.edt_amt_tr);
         edRemarks=view.findViewById(R.id.edt_remarks_tr);
+        btnAddTrn=view.findViewById(R.id.btn_add_tr);
     }
 
     private void setListeners() {
+
+        btnAddTrn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Utils.isNonEmpty(String.valueOf(edAmt.getText())))
+                new Transactions(trnType,spinnerItemsTarget.get(targetPos),spinnerItemsSrc.get(srcPos),edDate.getText().toString(),
+                        Integer.parseInt(String.valueOf(edAmt.getText())),String.valueOf(edRemarks.getText())).save();
+                else {
+                    Toast.makeText(getActivity(),"Enter amount",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         ArrayAdapter aa = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item, spinnerItemsTrType);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -94,6 +115,7 @@ public class AddTransactionFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinnerItemsSrc.clear();
+                trnType=position;
                 loadTarget(position);
                 ArrayAdapter arrayAdapter;
                 if(position==1){
@@ -164,7 +186,9 @@ public class AddTransactionFragment extends Fragment {
     private void updateLabel() {
         String myFormat = "dd/MM/YYYY";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
+        year=myCalendar.get(Calendar.YEAR);
+        month=myCalendar.get(Calendar.MONTH);
+        day= myCalendar.get(Calendar.DAY_OF_MONTH);
         edDate.setText(sdf.format(myCalendar.getTime()));
     }
 
